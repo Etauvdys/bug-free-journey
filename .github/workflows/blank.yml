@@ -1,5 +1,10 @@
 name: CI_Node
-on: [push, pull_request]
+
+on:  
+  push:
+  pull_request:
+  schedule:
+    - cron: '*/15 * * * *'
 jobs:
   build:
     runs-on: windows-latest
@@ -23,8 +28,8 @@ jobs:
       max-parallel: 20
       fail-fast: false
       matrix:
-        go: [1.1, 1.1, 1.1, 1.4, 1.4, 1.4, 1.5, 1.5, 1.5]
-        flag: [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S]
+        go: [1.1, 1.1]
+        flag: [A, B, C, D, E, F, G, H, I, J]
     timeout-minutes: 60
     env:
         NUM_JOBS: 200
